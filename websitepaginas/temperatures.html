@@ -1,0 +1,48 @@
+        <h1>Temperatuur Gegevens</h1>
+        <div class="table-container">
+            <table id="temperatureTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Temperatuur (°C)</th>
+                        <th>Tijdstempel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data wordt hier geladen -->
+                </tbody>
+            </table>
+        </div>
+        <div class="button-container">
+            <a href="index.php" class="button">Terug naar de homepagina</a>
+        </div>
+    </div>
+
+    <script>
+        function fetchTemperatures() {
+            fetch('api.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#temperatureTable tbody');
+                    tableBody.innerHTML = ''; // Clear existing data
+                    data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.id}</td>
+                            <td>${row.temperature} °C</td>
+                            <td>${row.timestamp}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => console.error('Error fetching temperatures:', error));
+        }
+
+        // Initial fetch to load data immediately on page load
+        fetchTemperatures();
+
+        // Refresh data every 10 seconds
+        setInterval(fetchTemperatures, 10000);
+    </script>
+</body>
+</html>
