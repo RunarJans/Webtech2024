@@ -1,5 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatuur Gegevens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .scrollable-table {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Temperatuur Gegevens</h1>
-        <div class="table-container">
+        <div class="button-container">
+            <button class="button" onclick="resetData()">Reset Gegevens</button>
+            <!-- Verwijst naar index.php -->
+            <a class="button" href="index.php">Terug naar Homepagina</a>
+        </div>
+        <div class="scrollable-table">
             <table id="temperatureTable">
                 <thead>
                     <tr>
@@ -12,9 +104,6 @@
                     <!-- Data wordt hier geladen -->
                 </tbody>
             </table>
-        </div>
-        <div class="button-container">
-            <a href="index.php" class="button">Terug naar de homepagina</a>
         </div>
     </div>
 
@@ -29,13 +118,29 @@
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td>${row.id}</td>
-                            <td>${row.temperature} °C</td>
+                            <td>${row.temperature}</td>
                             <td>${row.timestamp}</td>
                         `;
                         tableBody.appendChild(tr);
                     });
                 })
                 .catch(error => console.error('Error fetching temperatures:', error));
+        }
+
+        function resetData() {
+            fetch('reset_data.php', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Gegevens zijn gereset.');
+                    fetchTemperatures(); // Refresh data after reset
+                } else {
+                    alert('Fout bij het resetten van gegevens.');
+                }
+            })
+            .catch(error => console.error('Error resetting data:', error));
         }
 
         // Initial fetch to load data immediately on page load

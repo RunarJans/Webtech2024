@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
             font-weight: bold;
         }
 
@@ -13,27 +57,34 @@
 
         <h2>Over Mij</h2>
         <p>
-            Ik ben 20 jaar oud en mijn belangrijkste interesse ligt bij hardware. Hoewel dit project >        </p>
+            Ik ben 20 jaar oud en mijn belangrijkste interesse ligt bij hardware. Hoewel dit project zich richt op een andere aspecten, namelijk het combineren van hardware met software via webtechnologieën, vond ik het een zeer leerzame ervaring. Ik ben ervan overtuigd dat de kennis en vaardigheden die ik tijdens dit project heb opgedaan, mij in de toekomst goed van pas zullen komen.
+        </p>
 
         <h2>Project Overzicht</h2>
         <p>
-            Dit project maakt gebruik van een PYNQ-bord (Python Productivity for Zynq) om gesimuleerd>        </p>
+            Dit project maakt gebruik van een PYNQ-bord (Python Productivity for Zynq) om gesimuleerde temperatuurgegevens te genereren en deze gegevens te presenteren op een webpagina.
+        </p>
 
         <h2>Werking van het Project</h2>
         <p>
             <strong>1. Gesimuleerde Temperatuurwaarden:</strong><br>
-            Het PYNQ-bord genereert regelmatig gesimuleerde temperatuurgegevens. Deze simulatie is in>        </p>
+            Het PYNQ-bord genereert regelmatig gesimuleerde temperatuurgegevens. Deze simulatie is ingesteld om realistische temperatuurmetingen te emuleren.
+        </p>
         <p>
             <strong>2. Gegevensopslag en -verwerking:</strong><br>
-            De gesimuleerde gegevens worden opgeslagen in een PostgreSQL-database. Dit maakt het moge>        </p>
+            De gesimuleerde gegevens worden opgeslagen in een PostgreSQL-database. Dit maakt het mogelijk om de gegevens op een gestructureerde manier te beheren en op te halen.
+        </p>
         <p>
             <strong>3. Backend API:</strong><br>
-            Een PHP-script fungeert als API-endpoint dat de gegevens uit de PostgreSQL-database opvra>        </p>
+            Een PHP-script fungeert als API-endpoint dat de gegevens uit de PostgreSQL-database opvraagt en deze beschikbaar stelt in JSON-formaat. Dit stelt de webpagina in staat om de gegevens op te halen en weer te geven.
+        </p>
         <p>
             <strong>4. Frontend Weergave:</strong><br>
-            De webpagina maakt gebruik van HTML en JavaScript om de temperatuurgegevens weer te geven>        </p>
+            De webpagina maakt gebruik van HTML en JavaScript om de temperatuurgegevens weer te geven. De gegevens worden in een tabel gepresenteerd en worden elke 10 seconden automatisch bijgewerkt om de meest recente informatie te tonen.
+        </p>
         <p>
-            Het resultaat is een dynamische webpagina die de gesimuleerde temperatuurmetingen van het>        </p>
+            Het resultaat is een dynamische webpagina die de gesimuleerde temperatuurmetingen van het PYNQ-bord op een gebruiksvriendelijke manier presenteert.
+        </p>
 
         <p><a href="index.php">Terug naar de homepagina</a></p>
     </div>
