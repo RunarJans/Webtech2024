@@ -6,7 +6,7 @@ $host = "localhost";
 $port = "5432";
 $dbname = "sensor_data";
 $user = "runar";
-$password = "a secret";
+$password = "3939";
 
 // Connect to PostgreSQL
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
@@ -18,7 +18,9 @@ if (!$conn) {
 $request_method = $_SERVER["REQUEST_METHOD"];
 switch($request_method) {
     case 'GET':
-        if (!empty($_GET["id"])) {
+        if (isset($_GET["get"]) && $_GET["get"] === "latest") {
+            get_latest_temperatures();
+        } elseif (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
             get_temperature($id);
         } else {
@@ -52,15 +54,41 @@ switch($request_method) {
 function get_temperatures() {
     global $conn;
     $result = pg_query($conn, "SELECT * FROM temperature_data ORDER BY timestamp DESC");
-    $data = pg_fetch_all($result);
-    echo json_encode($data);
+    if (!$result) {
+        http_response_code(500);
+        echo json_encode(["error" => "Query failed."]);
+    } else {
+        $data = pg_fetch_all($result);
+        echo json_encode($data);
+    }
 }
 
 function get_temperature($id) {
     global $conn;
     $result = pg_query_params($conn, "SELECT * FROM temperature_data WHERE id = $1", array($id));
-    $data = pg_fetch_assoc($result);
-    echo json_encode($data);
+    if (!$result) {
+        http_response_code(500);
+        echo json_encode(["error" => "Query failed."]);
+    } else {
+        $data = pg_fetch_assoc($result);
+        echo json_encode($data);
+    }
+}
+
+function get_latest_temperatures() {
+    global $conn;
+    $result = pg_query($conn, "SELECT * FROM temperature_data ORDER BY timestamp DESC LIMIT 20");
+    if (!$result) {
+        http_response_code(500);
+        echo json_encode(["error" => "Query failed."]);
+    } else {
+        $data = pg_fetch_all($result);
+        // Ensure the timestamp is in the correct format for JavaScript
+        foreach ($data as &$row) {
+            $row['timestamp'] = date('c', strtotime($row['timestamp']));
+        }
+        echo json_encode($data);
+    }
 }
 
 function insert_temperature() {
