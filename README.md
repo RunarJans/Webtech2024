@@ -18,7 +18,8 @@ Dit project maakt gebruik van een PYNQ-bord (Python Productivity for Zynq) om ge
 
 ## Project Beschrijving
 
-Het project is ontworpen om temperatuurmetingen die gesimuleerd worden door een PYNQ-bord, op een webpagina weer te geven. Dit gebeurt door het ophalen van gegevens uit een PostgreSQL-database via een PHP-backend, en het dynamisch updaten van een HTML-tabel met JavaScript.
+Het project is ontworpen om temperatuurmetingen die gesimuleerd worden door een PYNQ-bord, op een webpagina ([Klik hier om naar de link te gaan](http://server-of-runar.pxl.bjth.xyz/)
+)weer te geven. Dit gebeurt door het ophalen van gegevens uit een PostgreSQL-database via een PHP-backend, en het dynamisch updaten van een HTML-tabel met JavaScript.
 
 ## Technische Specificaties
 
