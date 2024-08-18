@@ -6,7 +6,7 @@ $host = '49.12.77.132';
 $port = '5432';
 $dbname = 'sensor_data';
 $user = 'runar';
-$password = '3939';
+$password = 'a secret';
 
 // Verbind met de database
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");

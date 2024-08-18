@@ -6,7 +6,7 @@ $host = "localhost";
 $port = "5432";
 $dbname = "sensor_data";
 $user = "runar";
-$password = "3939";
+$password = "a secret";
 
 // Connect to PostgreSQL
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
