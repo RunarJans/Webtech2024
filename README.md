@@ -67,6 +67,7 @@ Het project is ontworpen om temperatuurmetingen die gesimuleerd worden door een 
 
 - **Homepagina**: `index.html` biedt links naar de temperatuurgegevens en de About Us-pagina.
 - **Temperatuur Gegevens**: `temperatures.html` toont een dynamische tabel van temperatuurgegevens die elke 10 seconden wordt bijgewerkt.
+- **Let op dat de tijdstempel van de server volgens de servertijd is, die mogelijk in een andere tijdzone kan liggen.
 - **About Us**: `about_us.html` geeft informatie over het project en de ontwikkelaar.
 
 ## API Documentatie
